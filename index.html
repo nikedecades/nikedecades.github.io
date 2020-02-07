@@ -5,17 +5,18 @@
     <link rel="stylesheet" href="styles.css">
     <!-- <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.min.css"> -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
-    <!-- <script src="node_modules/three/build/three.min.js"></script>
-    <script src="node_modules/three/examples/js/controls/OrbitControls.js"></script>
-    <script src="node_modules/three/examples/js/loaders/GLTFLoader.js"></script>
-    <script src="node_modules/three/examples/js/WebGL.js"></script>
-    <script src="node_modules/three/examples/js/libs/stats.min.js"></script> -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+    <script type="text/javascript" src="js/three.min.js"></script>
+    <script type="text/javascript" src="js/OrbitControls.js"></script>    
+    <script type="text/javascript" src="js/GLTFLoader.js"></script>
+    <script type="text/javascript" src="js/WebGL.js"></script>
+    <script type="text/javascript" src="js/stats.min.js"></script>
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script>
         $(document).ready(function () {
             var scrollItem = document.getElementById('sneaker');
 
-            window.addEventListener('wheel', function(e) {
+            window.addEventListener('wheel', function (e) {
                 if (e.deltaY > 0) {
                     scrollItem.scrollLeft += 110;
                 } else {
@@ -51,7 +52,8 @@
     <!-- main title -->
     <div class=header>
         <h1 class="classic-font">R E I D C H A B O T</h1>
-        <ul class="classic-font" style="list-style-type: none; top: 50px; overflow: hidden; padding-left: 55px; padding-top: 20px;">
+        <ul class="classic-font"
+            style="list-style-type: none; top: 50px; overflow: hidden; padding-left: 55px; padding-top: 20px;">
             <li><a id="sneaker_link" href="#">S N E A K E R S</a></li>
             <li><a id="webm_link" href="#">W E B M</a></li>
             <li><a id="canvas_link" href="#">3 D M O D E L</a></li>
@@ -61,7 +63,7 @@
     <!-- <div class="classic-font list-position"> -->
     <!-- <div style="position: absolute; top: 50px;"> -->
 
-    <div id="sneaker" class="horizontal">
+    <div id="sneaker" class="horizontal" style="display: none;">
         <div class="shoe-image">
             <img src="assets/Sneaker/Detail_01.png" style="width: 100%; height: 100%;">
         </div>
@@ -106,16 +108,16 @@
         </div>
     </div>
     <!-- <div id="webm" style="display: none; text-align: center">
-            <div style="display: inline-block; margin: 0 auto;">
-                <video src="assets/webmc.webm" loop autoplay muted playsinline></video>
-            </div>
+        <div style="display: inline-block; margin: 0 auto;">
+            <video src="assets/webmc.webm" loop autoplay muted playsinline></video>
         </div>
-        <div id="canvas_div" style="width: 100%; height: 100%; top: 50px; display: none;">
-            <canvas id="canvas"></canvas>
-        </div> -->
+    </div> -->
+    <div id="canvas_div" style="width: 100%; height: 100%; top: 50px; display: none;">
+        <canvas id="canvas"></canvas>
+    </div>
     <!-- </div> -->
 
-    <!-- <script>
+    <script>
         function main() {
             const canvas = document.querySelector('#canvas');
             const renderer = new THREE.WebGLRenderer({ canvas });
@@ -132,7 +134,7 @@
             controls.update();
 
             const scene = new THREE.Scene();
-            scene.background = new THREE.Color('white');
+            scene.background = new THREE.Color('#e4e4e4');
 
             {
                 const planeSize = 40;
@@ -233,7 +235,7 @@
         }
 
         main();
-    </script> -->
+    </script>
 </body>
 
 </html>
