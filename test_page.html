@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <link rel="stylesheet" href="styles.css">
+    <!-- <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.min.css"> -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+    <!-- <script src="node_modules/three/build/three.min.js"></script>
+    <script src="node_modules/three/examples/js/controls/OrbitControls.js"></script>
+    <script src="node_modules/three/examples/js/loaders/GLTFLoader.js"></script>
+    <script src="node_modules/three/examples/js/WebGL.js"></script>
+    <script src="node_modules/three/examples/js/libs/stats.min.js"></script> -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            var scrollItem = document.getElementById('sneaker');
+
+            window.addEventListener('wheel', function(e) {
+                if (e.deltaY > 0) {
+                    scrollItem.scrollLeft += 110;
+                } else {
+                    scrollItem.scrollLeft -= 110;
+                }
+            });
+
+            $("#sneaker_link").click(function () {
+                console.log('sneaker has been clicked');
+                $("#sneaker").show();
+                $("#webm").hide();
+                $("#canvas_div").hide();
+            });
+
+            $("#webm_link").click(function () {
+                console.log('webm has been clicked');
+                $("#sneaker").hide();
+                $("#canvas_div").hide();
+                $("#webm").show();
+            });
+
+            $("#canvas_link").click(function () {
+                console.log('canvas has been clicked');
+                $("#sneaker").hide();
+                $("#webm").hide();
+                $("#canvas_div").show();
+            });
+        });
+    </script>
+</head>
+
+<body>
+    <!-- main title -->
+    <div class=header>
+        <h1 class="classic-font">R E I D C H A B O T</h1>
+        <ul class="classic-font" style="list-style-type: none; top: 50px; overflow: hidden; padding-left: 55px; padding-top: 20px;">
+            <li><a id="sneaker_link" href="#">S N E A K E R S</a></li>
+            <li><a id="webm_link" href="#">W E B M</a></li>
+            <li><a id="canvas_link" href="#">3 D M O D E L</a></li>
+        </ul>
+    </div>
+
+    <!-- <div class="classic-font list-position"> -->
+    <!-- <div style="position: absolute; top: 50px;"> -->
+
+    <div id="sneaker" class="horizontal">
+        <div class="shoe-image">
+            <img src="assets/sneaker/Detail_01.png" style="width: 100%; height: 100%;">
+        </div>
+        <div class="shoe-image">
+            <img src="assets/sneaker/Detail_02.png" style="width: 100%; height: 100%;">
+        </div>
+        <div class="shoe-image">
+            <img src="assets/sneaker/Detail_03.png" style="width: 100%; height: 100%;">
+        </div>
+        <div class="shoe-image">
+            <img src="assets/sneaker/Detail_04.png" style="width: 100%; height: 100%;">
+        </div>
+        <div class="shoe-image">
+            <img src="assets/sneaker/Detail_05.png" style="width: 100%; height: 100%;">
+        </div>
+        <div class="shoe-image">
+            <img src="assets/sneaker/Detail_06.png" style="width: 100%; height: 100%;">
+        </div>
+        <div class="shoe-image">
+            <img src="assets/sneaker/Detail_07.png" style="width: 100%; height: 100%;">
+        </div>
+        <div class="shoe-image">
+            <img src="assets/sneaker/Detail_08.png" style="width: 100%; height: 100%;">
+        </div>
+        <div class="shoe-image">
+            <img src="assets/sneaker/Dynamic_01.png" style="width: 100%; height: 100%;">
+        </div>
+        <div class="shoe-image">
+            <img src="assets/sneaker/Dynamic_02.png" style="width: 100%; height: 100%;">
+        </div>
+        <div class="shoe-image">
+            <img src="assets/sneaker/Dynamic_03.png" style="width: 100%; height: 100%;">
+        </div>
+        <div class="shoe-image">
+            <img src="assets/sneaker/Exploded_01.png" style="width: 100%; height: 100%;">
+        </div>
+        <div class="shoe-image">
+            <img src="assets/sneaker/Exploded_02.png" style="width: 100%; height: 100%;">
+        </div>
+        <div class="shoe-image">
+            <img src="assets/sneaker/Exploded_03.png" style="width: 100%; height: 100%;">
+        </div>
+    </div>
+    <!-- <div id="webm" style="display: none; text-align: center">
+            <div style="display: inline-block; margin: 0 auto;">
+                <video src="assets/webmc.webm" loop autoplay muted playsinline></video>
+            </div>
+        </div>
+        <div id="canvas_div" style="width: 100%; height: 100%; top: 50px; display: none;">
+            <canvas id="canvas"></canvas>
+        </div> -->
+    <!-- </div> -->
+
+    <!-- <script>
+        function main() {
+            const canvas = document.querySelector('#canvas');
+            const renderer = new THREE.WebGLRenderer({ canvas });
+
+            const fov = 45;
+            const aspect = 2;  // the canvas default
+            const near = 0.1;
+            const far = 100;
+            const camera = new THREE.PerspectiveCamera(fov, aspect, near, far);
+            camera.position.set(20, 10, 0);
+
+            const controls = new THREE.OrbitControls(camera, canvas);
+            controls.target.set(0, 5, 0);
+            controls.update();
+
+            const scene = new THREE.Scene();
+            scene.background = new THREE.Color('white');
+
+            {
+                const planeSize = 40;
+
+                const loader = new THREE.TextureLoader();
+            }
+
+            {
+                const intensity = 1;
+                const light = new THREE.HemisphereLight(intensity);
+                scene.add(light);
+            }
+
+            {
+                const color = 0xFFFFFF;
+                const intensity = 1;
+                const light = new THREE.DirectionalLight(color, intensity);
+                light.position.set(5, 10, 2);
+                scene.add(light);
+                scene.add(light.target);
+            }
+
+            function frameArea(sizeToFitOnScreen, boxSize, boxCenter, camera) {
+                const halfSizeToFitOnScreen = sizeToFitOnScreen * 0.5;
+                const halfFovY = THREE.Math.degToRad(camera.fov * .5);
+                const distance = halfSizeToFitOnScreen / Math.tan(halfFovY);
+                // compute a unit vector that points in the direction the camera is now
+                // in the xz plane from the center of the box
+                const direction = (new THREE.Vector3())
+                    .subVectors(camera.position, boxCenter)
+                    .multiply(new THREE.Vector3(1, 0, 1))
+                    .normalize();
+
+                // move the camera to a position distance units way from the center
+                // in whatever direction the camera was from the center already
+                camera.position.copy(direction.multiplyScalar(distance).add(boxCenter));
+
+                // pick some near and far values for the frustum that
+                // will contain the box.
+                camera.near = boxSize / 100;
+                camera.far = boxSize * 100;
+
+                camera.updateProjectionMatrix();
+
+                // point the camera to look at the center of the box
+                camera.lookAt(boxCenter.x, boxCenter.y, boxCenter.z);
+            }
+
+            {
+                const gltfLoader = new THREE.GLTFLoader();
+                gltfLoader.load('assets/website.gltf', (gltf) => {
+                    const root = gltf.scene;
+                    scene.add(root);
+
+                    root.rotation.x += 0.05;
+
+                    // compute the box that contains all the stuff
+                    // from root and below
+                    const box = new THREE.Box3().setFromObject(root);
+
+                    const boxSize = box.getSize(new THREE.Vector3()).length();
+                    const boxCenter = box.getCenter(new THREE.Vector3());
+
+                    // set the camera to frame the box
+                    frameArea(boxSize * 0.5, boxSize, boxCenter, camera);
+
+                    // update the Trackball controls to handle the new size
+                    controls.maxDistance = boxSize * 10;
+                    controls.target.copy(boxCenter);
+                    controls.update();
+                });
+            }
+
+            function resizeRendererToDisplaySize(renderer) {
+                const canvas = renderer.domElement;
+                const width = canvas.clientWidth;
+                const height = canvas.clientHeight;
+                const needResize = canvas.width !== width || canvas.height !== height;
+                if (needResize) {
+                    renderer.setSize(width, height, false);
+                }
+                return needResize;
+            }
+
+            function render() {
+                if (resizeRendererToDisplaySize(renderer)) {
+                    const canvas = renderer.domElement;
+                    camera.aspect = canvas.clientWidth / canvas.clientHeight;
+                    camera.updateProjectionMatrix();
+                }
+
+                renderer.render(scene, camera);
+
+                requestAnimationFrame(render);
+            }
+
+            requestAnimationFrame(render);
+        }
+
+        main();
+    </script> -->
+</body>
+
+</html>
